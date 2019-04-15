@@ -11,10 +11,10 @@ function bird(){
 
     // Funciones //
     this.show = function(){
-        fill(255);
+        fill(255,200,30);
         ellipse(this.x,this.y,this.radius,this.radius);
 
-    }
+    };
 
 
 
@@ -27,7 +27,7 @@ function bird(){
         
         
        
-    }
+    };
 
 
     this.checkOut = function(){
@@ -43,7 +43,7 @@ function bird(){
             this.velocity=0;
         }
 
-    }
+    };
 
 
     this.up = function(){
@@ -52,7 +52,7 @@ function bird(){
         // nuestro 'pajaro' se mueva hacia arriba
         this.velocity += this.upForce;
 
-    }
+    };
 
 
 }
