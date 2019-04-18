@@ -1,9 +1,12 @@
 var bird;
 var obs = [];
 let index = 0;
+let score = 0;
+let lastScore = 0;
+
 function setup() {
     // put setup code here
-    createCanvas(1300, 900);
+    createCanvas(1200, 700);
     bird = new bird();
     obs.push(new objeto());
 
@@ -31,7 +34,20 @@ function draw() {
     }
 
 
+    for (let i = 0; i <  obs.length; i++) {
+        obs[i].checkColision(bird);
+        //console.log(obs.length)
+    }
+
+    if (score !== lastScore){
+        console.log(score);
+        lastScore = score;
+    }
+
+
 }
+
+
 
 function keyPressed(){
     if(key === ' '){
