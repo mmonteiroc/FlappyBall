@@ -2,6 +2,7 @@ var bird;
 var obs = [];
 let index = 0;
 let score = 0;
+let indexDead = 0;
 let lastScore = 0;
 
 function setup() {
@@ -16,10 +17,13 @@ function draw() {
     background(0);
     bird.update();
     bird.show();
+    paintScore(score);
 
-    if (obs[0].x <= 0){
+
+    if (obs[0].x <= (obs[0].width * -1)){
         // borramos el primero
-        obs.shift;
+        obs.shift();
+        index--;
     }
 
     if (obs[index].x<=700){
@@ -35,14 +39,25 @@ function draw() {
 
 
     for (let i = 0; i <  obs.length; i++) {
-        obs[i].checkColision(bird);
+
         //console.log(obs.length)
+        if (obs[i].checkColision(bird)){
+            score=0;
+        }
     }
 
     if (score !== lastScore){
-        console.log(score);
         lastScore = score;
     }
+
+    if (obs[indexDead].x < bird.x){
+        console.log("AumentandoIndexDead");
+        indexDead++;
+        score++;
+        console.log(score);
+    }
+
+
 
 
 }
@@ -59,5 +74,9 @@ function keyPressed(){
 
 
 
-
-
+// Painting
+function paintScore(score){
+    textSize(32);
+    fill(0,0,255);
+    text('Score: ' + score*10, 10, 30);
+}
